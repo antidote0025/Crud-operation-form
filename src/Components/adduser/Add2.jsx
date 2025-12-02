@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 
 const Add2 = () => {
 
-  const users = {
+  const initialState = {
     fname: "",
     lname: "",
     email: "",
@@ -14,7 +14,7 @@ const Add2 = () => {
     password: ""
   };
 
-  const [user, setUser] = useState(users);
+  const [user, setUser] = useState(initialState);
   const navigate = useNavigate();
 
   const inputHandler = (e) => {
@@ -22,15 +22,24 @@ const Add2 = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const sumbitForm = async (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-    
-    await axios.post("http://localhost:8000/api/create", user)
-      .then((response) => {
-        toast.success(response.data.msg,{position:"top-right"})
-        navigate("/")
-      })
-      .catch(error => console.log(error));
+
+    try {
+      const response = await axios.post("https://crud-backend-d1nd.onrender.com/api/create", user)
+      toast.success(response.data.msg || "User added!", {
+        position: "top-right"
+      });
+
+      setUser(initialState); // Reset form
+      navigate("/");
+
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to add user", {
+        position: "top-right"
+      });
+    }
   };
 
   return (
@@ -38,31 +47,76 @@ const Add2 = () => {
       <Link to={"/"}>Back</Link>
       <h3>Create New User</h3>
 
-      <form className='addUserForm' onSubmit={sumbitForm}>
+      <form className='addUserForm' onSubmit={submitForm}>
 
         <div className="inputGroup">
           <label htmlFor="fname">First name</label>
-          <input type="text" onChange={inputHandler} id='fname' name='fname' autoComplete='off' placeholder='first name' />
+          <input
+            type="text"
+            id='fname'
+            name='fname'
+            value={user.fname}
+            onChange={inputHandler}
+            autoComplete='off'
+            placeholder='first name'
+            required
+          />
         </div>
 
         <div className="inputGroup">
           <label htmlFor="lname">Last name</label>
-          <input type="text" onChange={inputHandler} id='lname' name='lname' autoComplete='off' placeholder='last name' />
+          <input
+            type="text"
+            id='lname'
+            name='lname'
+            value={user.lname}
+            onChange={inputHandler}
+            autoComplete='off'
+            placeholder='last name'
+            required
+          />
         </div>
 
         <div className="inputGroup">
           <label htmlFor="email">Email</label>
-          <input type="email" onChange={inputHandler} id='email' name='email' autoComplete='off' placeholder='enter email' />
+          <input
+            type="email"
+            id='email'
+            name='email'
+            value={user.email}
+            onChange={inputHandler}
+            autoComplete='off'
+            placeholder='enter email'
+            required
+          />
         </div>
 
         <div className="inputGroup">
           <label htmlFor="age">Age</label>
-          <input type="number" onChange={inputHandler} id='age' name='age' autoComplete='off' placeholder='enter age' />
+          <input
+            type="number"
+            id='age'
+            name='age'
+            value={user.age}
+            onChange={inputHandler}
+            autoComplete='off'
+            placeholder='enter age'
+            required
+          />
         </div>
 
         <div className="inputGroup">
           <label htmlFor="password">Password</label>
-          <input type="password" onChange={inputHandler} id='password' name='password' autoComplete='off' placeholder='enter password' />
+          <input
+            type="password"
+            id='password'
+            name='password'
+            value={user.password}
+            onChange={inputHandler}
+            autoComplete='off'
+            placeholder='enter password'
+            required
+          />
         </div>
 
         <div className="inputGroup">

@@ -26,7 +26,7 @@ const Edit = () => {
   }
 
   useEffect(()=>{
-    axios.get(`http://localhost:8000/api/getone/${id}`)
+    axios.get(`https://crud-backend-d1nd.onrender.com/api/getone/${id}`)
     .then((response)=>{
       setUser(response.data);
 
@@ -41,7 +41,7 @@ const Edit = () => {
 
 const sumbitForm = async(e)=>{
  e.preventDefault();
-  await axios.put (`http://localhost:8000/api/update/${id}`,user)
+ axios.put(`https://crud-backend-d1nd.onrender.com/api/update/${id}`, user)
   .then((response)=>{
     toast.success(response.data.msg,{psoition:"top right"})
     navigate("/")
