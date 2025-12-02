@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Crud-operation-form/static/css/main.e0ae3ba8.css",
-    "main.js": "/Crud-operation-form/static/js/main.fd154b54.js",
+    "main.css": "/Crud-operation-form/static/css/main.ea7c9f18.css",
+    "main.js": "/Crud-operation-form/static/js/main.f346f386.js",
     "index.html": "/Crud-operation-form/index.html",
-    "main.e0ae3ba8.css.map": "/Crud-operation-form/static/css/main.e0ae3ba8.css.map",
-    "main.fd154b54.js.map": "/Crud-operation-form/static/js/main.fd154b54.js.map"
+    "main.ea7c9f18.css.map": "/Crud-operation-form/static/css/main.ea7c9f18.css.map",
+    "main.f346f386.js.map": "/Crud-operation-form/static/js/main.f346f386.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0ae3ba8.css",
-    "static/js/main.fd154b54.js"
+    "static/css/main.ea7c9f18.css",
+    "static/js/main.f346f386.js"
   ]
 }
