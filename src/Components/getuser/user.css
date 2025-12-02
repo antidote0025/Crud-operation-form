@@ -1,54 +1,164 @@
-.userTable{
-    width: 60%;
-    background-color: white;
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
-    border-radius: 5px;
-    margin: 50px auto;
-    padding: 50px;
+/* ===== FINAL PERFECT RESPONSIVE CSS - 100% WORKING ===== */
+
+.userTable {
+  width: 95%;
+  max-width: 900px;
+  margin: 30px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.addButton{
-    text-decoration: none;
-    background-color: purple;
-    color: white;
-    font-weight: 500;
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
-    border-radius: 5px;
-    padding: 10px;
-
+.addButton {
+  background: #9333ea;
+  color: white;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 6px 20px rgba(147, 51, 234, 0.3);
+  transition: all 0.3s ease;
 }
 
-.userTable table{
+.addButton:hover {
+  background: #7c3aed;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4);
+}
+
+/* Desktop Table */
+.userTable table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 14px;
+}
+
+.userTable table thead th {
+  background: #1e293b;
+  color: white;
+  padding: 16px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.userTable table tbody tr {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+}
+
+.userTable table tbody tr:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.userTable table td {
+  padding: 18px 14px;
+  vertical-align: middle;
+}
+
+/* Buttons - Desktop */
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.deleteBtn,
+.editBtn {
+  padding: 10px 20px;
+  border-radius: 10px;        /* sirf ek hi line rakho */
+  font-size: 14.5px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 90px;
+  transition: all 0.2s;
+  border: none;
+  flex: 1;
+}
+
+.deleteBtn {
+  background: #ef4444;
+  color: white;
+}
+
+.deleteBtn:hover { background: #dc2626; }
+
+.editBtn {
+  background: #10b981;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.editBtn:hover { background: #059669; }
+
+/* MOBILE - Card View (640px se neeche) */
+@media (max-width: 640px) {
+
+  .addButton {
+    width: 96%;
+    padding: 16px;
+    font-size: 18px;
+  }
+
+  .userTable table thead { display: none; }
+
+  .userTable table,
+  .userTable table tbody,
+  .userTable table tr,
+  .userTable table td {
+    display: block;
     width: 100%;
-    margin-top: 30px;
-    border-collapse: collapse;
-}
-.userTable table thead th{
-    background-color: darkblue;
-    color: white;
-    padding: 10px;
-}
+  }
 
-.userTable table tbody td{
-    padding: 10px;
-    text-align:center;
-}
+  .userTable table tr {
+    margin-bottom: 20px;
+    border-radius: 16px;
+    padding: 18px;
+    background: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
 
-.actionButtons button{
-    border: 0;
-    outline: none;
-    background-color: red;
-    padding: 8px 10px;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
+  .userTable table td {
+    padding: 11px 0;
+    padding-left: 50%;
+    position: relative;
+    text-align: right;
+    font-size: 15.5px;
+    border: none;
+  }
 
-.actionButtons a{
-    background-color: green;
-    padding: 6px 10px;
-    color: white;
-    border-radius: 5px;
-    margin: 0 10px;
-    text-decoration: none;
+  .userTable table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 18px;
+    width: 45%;
+    font-weight: 600;
+    color: #1e40af;
+    text-align: left;
+    font-size: 15px;
+  }
+
+  /* Buttons - Mobile pe dono full width aur ek ke neeche ek */
+  .actionButtons {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .deleteBtn,
+  .editBtn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
 }
